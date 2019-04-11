@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -86,6 +87,10 @@ public class Doublets implements WordLadderGame {
         queue.addLast(n);
         visited.add(n.word);
         ArrayList<String> wordLadder = new ArrayList<>();
+        if (start.equals(end)) {
+            wordLadder.add(start);
+            return wordLadder;
+        }
         while (!queue.isEmpty()) {
             Node n2 = queue.removeFirst();
             if (n2.word.equals(end.toUpperCase())) {
@@ -105,7 +110,11 @@ public class Doublets implements WordLadderGame {
             }
 
         }
-        return wordLadder;
+        ArrayList<String> wordLadderReversed = new ArrayList<>();
+        for (int i = wordLadder.size() - 1; i >= 0; i--) {
+            wordLadderReversed.add(wordLadder.get(i));
+        }
+        return wordLadderReversed;
     }
 
     @Override
