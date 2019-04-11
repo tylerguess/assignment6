@@ -80,7 +80,32 @@ public class Doublets implements WordLadderGame {
 
     @Override
     public List<String> getMinLadder(String start, String end) {
-        return null;
+        HashSet<String> visited = new HashSet<>();
+        Deque<Node> queue = new ArrayDeque<>();
+        Node n = new Node(start, null);
+        queue.addLast(n);
+        visited.add(n.word);
+        ArrayList<String> wordLadder = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            Node n2 = queue.removeFirst();
+            if (n2.word.equals(end)) {
+                wordLadder.add(end);
+                while (n2.previous != null) {
+                    n2 = n2.previous;
+                    wordLadder.add(n2.word);
+                }
+            }
+            String word = n2.word;
+            for (String neighbor : getNeighbors(word)) {
+                if (!visited.contains(neighbor)) {
+                    Node n3 = new Node(neighbor, n2);
+                    visited.add(n3.word);
+                    queue.addLast(new Node(n3.word, n2));
+                }
+            }
+
+        }
+        return wordLadder;
     }
 
     @Override
@@ -131,6 +156,17 @@ public class Doublets implements WordLadderGame {
             }
         }
         return true;
+    }
+
+    class Node {
+        String word;
+        Node previous;
+
+        public Node(String word, Node previous) {
+            this.word = word;
+            this.previous = previous;
+
+        }
     }
 
 
