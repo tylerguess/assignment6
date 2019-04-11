@@ -88,7 +88,7 @@ public class Doublets implements WordLadderGame {
         ArrayList<String> wordLadder = new ArrayList<>();
         while (!queue.isEmpty()) {
             Node n2 = queue.removeFirst();
-            if (n2.word.equals(end)) {
+            if (n2.word.equals(end.toUpperCase())) {
                 wordLadder.add(end);
                 while (n2.previous != null) {
                     n2 = n2.previous;

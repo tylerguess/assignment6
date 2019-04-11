@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        WordLadderGame doublets = new Doublets(new FileInputStream(new File("sowpods.txt")));
+        WordLadderGame doublets = new Doublets(new FileInputStream(new File("tiny.txt")));
 
 //        System.out.println(doublets.getHammingDistance("tiger", "tiger"));
 //        System.out.println(doublets.getHammingDistance("tiger", "eagle"));
@@ -19,11 +19,11 @@ public class Main {
 //
 //        System.out.println(doublets.getWordCount());
 //
-        System.out.println(doublets.isWordLadder(Arrays.asList("cat", "cot", "zot", "dot")));
-        System.out.println(doublets.isWordLadder(Arrays.asList("cat", "cot", "pot", "dot")));
+//        System.out.println(doublets.isWordLadder(Arrays.asList("cat", "cot", "zot", "dot")));
+//        System.out.println(doublets.isWordLadder(Arrays.asList("cat", "cot", "pot", "dot")));
 
 //        System.out.println(doublets.getNeighbors("tiger"));
 
-//        System.out.println(doublets.getMinLadder("cat", "hat"));
+        System.out.println(doublets.getMinLadder("cat", "can"));
     }
 }
